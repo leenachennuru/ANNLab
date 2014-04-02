@@ -1,0 +1,10 @@
+for i=1:252; j=1:216;
+if S(i,j) <=150 
+S(i,j) = -1;
+else 
+S(i,j) = 1;
+end
+end
+S
+
+216

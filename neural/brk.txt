@@ -1,0 +1,7 @@
+for i=2:m:2^m
+A(:,i)=v;
+if A(:,i) == A(:,i-1)
+fprintf('the fixed point has been obtained')
+break
+end
+end

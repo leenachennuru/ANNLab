@@ -1,0 +1,104 @@
+F= xlsread('F.xls');
+H= xlsread('H.xls');
+I = xlsread('I.xls');
+
+F1 = reshape(F, 1, prod(size(J)))
+H1 = reshape(H, 1, prod(size(U)))
+I1 = reshape(I, 1, prod(size(Y)))
+
+S = [F1;H1;I1];
+
+
+J = xlsread('J.xls');
+U = xlsread('U.xls');
+Y = xlsread('Y.xls');
+
+J1 = reshape(J, 1, prod(size(J)))
+U1 = reshape(U, 1, prod(size(U)))
+Y1 = reshape(Y, 1, prod(size(Y)))
+
+S = [J1;U1;Y1];
+
+flag1 = 0;
+while flag1 == 0
+m = input ('\n\nPlease enter the number of neurons, m:')
+p = input ('Please enter the number of patterns, p:')
+[h, k] = size(S);
+if (p<=m) && (p==h) && (m==k)
+flag1 = 1;
+fprintf ('The input is valid. You can proceed.')
+else
+flag1 = 0;
+fprintf ('The input is invalid. Please enter the input values again.')
+end
+end
+
+
+
+
+W = zeros(k);
+for i = 1:h, W = S(i,:)'*S(i,:) + W; i=i+1;
+end
+[hw,kw] = size(W)
+fprintf('\nThe Weight Matrix computed according to the Hebbian Rule is:')
+W = W - p*eye(hw)
+
+
+
+
+v = input ('\nPlease enter the Input Matrix, v:')
+z1 = reshape(v,4,4);
+imwrite(z1,'V.bmp');
+for j = 1:2^m/m
+for t=2:(2^m)/m;
+for i = 1:m
+net = W*v';
+o = sign(net);
+v = v';
+v(i,:) = o(i,:)
+v = v';
+
+
+
+
+
+
+
+i = i+1;
+end
+
+nik(:,t)=v
+if nik(:,t) == nik(:,t-1)
+fprintf('The fixed point has been reached.')
+break
+end
+end
+break
+j = j+1;
+end
+
+
+
+g='Pattern';
+d=[1:1:2^m];
+for r = 1: 1: length(d);
+e=[g,num2str(d(r)),'.bmp'];
+z2 = reshape(v,4,4);
+imwrite(z2, e, 'bmp');
+end
+
+
+fprintf('\nThe reached fixed point is:')
+v
+
+if v == S(1,:)
+fprintf('\nThe reached fixed point is Pattern J.')
+else if v == S(2,:)
+fprintf('\nThe reached fixed point is pattern U.')
+else if v == S(3,:)
+fprintf('\nThe reached fixed point is pattern Y.')
+else
+fprintf('\nThe reached fixed point does not correspond to any of the stored patterns.')
+end
+end
+end

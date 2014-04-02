@@ -1,0 +1,36 @@
+flag = 0;
+while flag == 0
+m = input ('\n\nPlease enter the number of neurons, m:')
+p = input ('Please enter the number of patterns, p:')
+A = input ('\n\nPlease enter the name of the image in single quotes.,    A:')
+imread(A)
+S = reshape(A, 1, prod(size(A)));
+[h, k] = size(S);
+
+
+if (p<=m) && (p==h) && (m==k)
+flag = 1;
+fprintf ('The input is valid. We can proceed.')
+
+else
+flag = 0;
+fprintf ('The input is invalid. We enter the input values again.')
+end
+
+end
+
+W = zeros(k);
+for i = 1:h, W = S(i,:)'*S(i,:) + W; i=i+1;
+end
+
+[a,b] = size(W)
+
+fprintf('The weight matrix computing according to the hebbian rule is')
+W = W - p*eye(a)
+
+v = input ('Please enter the Input Matrix, v:')
+for j= 1:m+1
+for i = 1:m
+net = W*v';
+v(1,:) = sign(v(1,:));
+

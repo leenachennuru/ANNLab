@@ -1,0 +1,66 @@
+5. Take in the input vector and carry out asynchronous updating:
+----------------------------------------------------------------------------------------------------------
+
+
+for l = 1:h3
+q = l;
+
+fprintf('\nInput number = %d',q);
+
+v = inp(l,:)
+
+for j = 1:2^m
+
+for i = 1:m
+
+net = W*v';
+o = sign(net);
+
+v = v';
+v(i,:) = o(i,:)
+
+v = v';
+
+
+i = i+1;
+
+end
+
+j = j+1;
+
+end
+
+fprintf('\nThe Fixed Point attained from input number = %d is:',q);
+v
+
+l = l+1;
+
+end
+
+---------------------------------------------------------------------------------------------------------
+
+
+for t=2:m:2^m
+q(:,t)=v;
+if q(:,t) == q(:,t-1)
+fprintf('the fixed point has been obtained')
+break
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

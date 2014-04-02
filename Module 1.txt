@@ -1,0 +1,51 @@
+flag = 0;
+
+while flag == 0
+
+m = input ('\n\nPlease enter the number of neurons, m:')
+p = input ('Please enter the number of patterns, p:')
+
+S = input ('Please enter the Pattern Matrix, S:')
+[h, k] = size(S);
+
+if (p<=m) && (p==h) && (m==k)
+flag = 1;
+fprintf ('The input is valid. We can proceed.')
+
+else
+flag = 0;
+fprintf ('The input is invalid. We enter the input values again.')
+end
+
+end
+
+W = zeros(k)
+for i = 1:h, W = S(i,:)'*S(i,:) + W; i=i+1;
+end
+
+[h,k] = size(W)
+fprintf('The Weight Matrix computed according to the Hebbian Rule is:')
+W = W - p*eye(h)
+
+v = input ('Please enter the Input Matrix, v:')
+
+for j = 1:2^m
+for t=2:(2^m)/m;
+for i = 1:m
+net = W*v';
+o = sign(net);
+v = v';
+v(i,:) = o(i,:)
+v = v';
+i = i+1;
+end
+c(:,t)=v
+if c(:,t) == c(:,t-1)
+fprintf('the fixed point has been obtained')
+break
+
+end
+end
+break
+j = j+1;
+end

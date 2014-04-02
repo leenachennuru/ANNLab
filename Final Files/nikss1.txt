@@ -1,0 +1,26 @@
+1. Input number of neurons and number of patterns:
+---------------------------------------------------------------------------------
+flag1 = 0;
+
+while flag1 == 0
+
+m = input ('\n\nPlease enter the number of neurons, m:')
+p = input ('Please enter the number of patterns, p:')
+
+if (p<=m)
+flag1 = 1;
+
+fprintf ('The input is valid. You can proceed.')
+
+else
+flag1 = 0;
+
+fprintf ('The input is invalid. Please enter the input values again.')
+
+end
+
+end
+---------------------------------------------------------------------------------
+
+
+

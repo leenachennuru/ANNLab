@@ -1,0 +1,15 @@
+a = input ('\n\nPlease enter the name of the image in single quotes., a:')
+
+imread(a)
+
+
+
+
+
+
+
+
+
+
+
+

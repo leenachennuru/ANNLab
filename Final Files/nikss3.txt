@@ -1,0 +1,27 @@
+3. Read the input vector matrix from an excel file:
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+flag3 = 0;
+
+while flag3 == 0;
+
+b = input ('\n\nPlease enter the name of the Input File containing the input matrix along with the file extension in single quotes., b:')
+inp = xlsread(b)
+
+[h3,k3] = size(inp);
+
+if (m==k3)
+flag3 = 1;
+
+fprintf ('The input is valid. You can proceed.')
+
+else
+flag3 = 0;
+
+fprintf ('The input is invalid. Please enter the input values again.')
+
+end
+
+end
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+

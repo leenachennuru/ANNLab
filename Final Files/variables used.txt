@@ -1,0 +1,25 @@
+
+
+
+flag1 - for while loop1
+
+m - no of neurons
+
+p - no of patterns
+
+
+
+
+flag2 - for while loop2
+
+a - read pattern matrix
+
+h2 and k2 - pattern matrix sizes
+
+
+
+flag3 - for while loop3
+
+b - read input matrix
+
+h3 and k3 - input matrix sizes

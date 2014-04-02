@@ -1,0 +1,12 @@
+4. Computing weight matrix using hebbian rule:
+---------------------------------------------------------------------------------------
+
+W = zeros(k2);
+
+for i = 1:h2, W = pat(i,:)'*pat(i,:) + W; i=i+1;
+end
+
+fprintf('The Weight Matrix computed according to the Hebbian Rule is:')
+W = W - p*eye(k2)
+
+------------------------------------------------------------------------------------------

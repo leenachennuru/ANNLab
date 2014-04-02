@@ -1,0 +1,125 @@
+flag1 = 0;
+
+while flag1 == 0
+
+m = input ('\n\nPlease enter the number of neurons, m:')
+p = input ('Please enter the number of patterns, p:')
+
+if (p<=m)
+flag1 = 1;
+
+fprintf ('The input is valid. You can proceed.')
+
+else
+flag1 = 0;
+
+fprintf ('The input is invalid. Please enter the input values again.')
+
+end
+
+end
+
+
+flag2 = 0;
+
+while flag2 == 0;
+
+a = input ('\n\nPlease enter the name of the Input File containing the pattern matrix along with the file extension in single quotes., a:')
+pat = xlsread(a)
+
+[h2,k2] = size(pat);
+
+if (p==h2) && (m==k2)
+flag2 = 1;
+
+fprintf ('The input is valid. You can proceed.')
+
+else
+flag2 = 0;
+
+fprintf ('The input is invalid. Please enter the input values again.')
+
+end
+
+end
+
+
+W = zeros(k2);
+
+for i = 1:h2, W = pat(i,:)'*pat(i,:) + W; i=i+1;
+end
+
+fprintf('The Weight Matrix computed according to the Hebbian Rule is:')
+W = W - p*eye(k2)
+
+
+v = input ('Please enter the Input Matrix, v:')
+
+for j = 1:2^m
+for t=2:(2^m)/m;
+for i = 1:m
+net = W*v';
+o = sign(net);
+v = v';
+v(i,:) = o(i,:)
+v = v';
+
+g='pattern';
+d=[1:1:m];
+for r = 1: 1: length(d);
+e=[g,num2str(d(i)),'.bmp'];
+imwrite(v, e, 'bmp');
+end
+
+
+i = i+1;
+end
+c(:,t)=v
+if c(:,t) == c(:,t-1)
+fprintf('The fixed point has been obtained.')
+break
+
+end
+end
+break
+j = j+1;
+end
+
+
+
+
+fprintf('\nThe reached fixed point is:')
+v
+
+if v == S(1,:)
+fprintf('\nThe reached fixed point is pattern 1.')
+else if v == S(2,:)
+fprintf('\nThe reached fixed point is pattern 2.')
+else
+fprintf('\nThe reached fixed point does not correspond to any of the stored patterns.')
+end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

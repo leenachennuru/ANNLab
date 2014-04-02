@@ -1,0 +1,200 @@
+a = input ('\n\nPlease enter the name of the Pattern bitmap image along with the file extension in single quotes., a:')
+pat = imread(a)
+[h6,k6] = size(pat);
+pattern = [];
+for i = 1:h6;
+
+pattern = [pattern,pat(i,:)];
+
+end
+
+[h2,k2] = size(pattern);
+
+
+for i = 1:k2;
+if pattern(1,i) == 255;
+pattern(1,i) = -1;
+else
+pattern(1,i) = 1;
+end
+end
+pattern
+
+
+flag1 = 0;
+
+while flag1 == 0
+
+m = input ('\n\nPlease enter the number of neurons, m:')
+p = input ('Please enter the number of patterns, p:')
+
+if (p<=m) && (m==k2)
+flag1 = 1;
+
+fprintf ('The input is valid. You can proceed.')
+
+else
+flag1 = 0;
+
+fprintf ('The input is invalid. Please enter the input values again.')
+
+end
+
+end
+
+
+flag3 = 0;
+
+while flag3 == 0;
+
+b = input ('\n\nPlease enter the name of the Input bitmap image along with the file extension in single quotes., b:')
+inp = imread(b)
+[h5,k5] = size(inp);
+inputimage = [];
+for i = 1:h5;
+
+inputimage = [inputimage,pat(i,:)];
+
+end
+
+[h3,k3] = size(inputimage);
+
+
+for i = 1:k3;
+if inputimage(1,i) == 255;
+inputimage(1,i) = -1;
+else
+inputimage(1,i) = 1;
+end
+end
+inputimage
+
+if (m==k3)
+flag3 = 1;
+
+fprintf ('The input is valid. You can proceed.')
+
+else
+flag3 = 0;
+
+fprintf ('The input is invalid. Please enter the input values again.')
+
+end
+
+end
+
+
+
+
+w = pattern'*pattern;
+
+fprintf('The Weight Matrix computed according to the Hebbian Rule is:')
+W = W - p*eye(k2)
+
+v = inputimage;
+
+for j = 1:2^m
+for t=2:(2^m)/m;
+for i = 1:m
+net = W*v';
+o = sign(net);
+v = v';
+v(i,:) = o(i,:)
+v = v';
+
+
+
+
+g='pattern';
+d=[1:1:m];
+for r = 1: 1: length(d);
+e=[g,num2str(d(i)),'.bmp'];
+
+z = []; 
+for i = 1:h5:k3
+z = [z;v(1,i:i+h5-1)]
+
+
+imwrite(z, e, 'bmp');
+end
+
+
+i = i+1;
+end
+c(:,t)=v
+if c(:,t) == c(:,t-1)
+fprintf('The fixed point has been obtained.')
+break
+
+end
+end
+break
+j = j+1;
+end
+
+
+
+
+fprintf('\nThe reached fixed point is:')
+v
+
+if v == pattern
+fprintf('\nThe reached fixed point is the given pattern.')
+
+else
+fprintf('\nThe reached fixed point does not correspond to the stored pattern.')
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

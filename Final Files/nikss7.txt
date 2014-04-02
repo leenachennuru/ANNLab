@@ -1,0 +1,18 @@
+7. Writing the image after a few iterations:
+-----------------------------------------------------------------------
+
+===================
+c='pattern';
+
+d=[1:1:m];
+
+for r = 1: 1: length(d);
+
+e=[c,num2str(d(i)),'.bmp'];
+
+x = reshape(v, 1, prod(size(v)))
+
+imwrite(x, e, 'bmp');
+
+end
+=========================

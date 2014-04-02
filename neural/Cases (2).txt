@@ -1,0 +1,30 @@
+Case 1:
+Patterns - manual
+Input - manual
+---------------------------------------------
+
+Case 2:
+Patterns - excel sheet matrix
+Input - manual
+---------------------------------------------
+
+Case 3:
+Patterns - excel sheet matrix
+Input - excel sheet matrix
+---------------------------------------------
+
+Case 4:
+Patterns - bitmap image
+Input - bitmap image
+---------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
